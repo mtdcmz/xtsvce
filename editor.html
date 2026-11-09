@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>星途少女社区版 剧情编辑器 v0.1</title>
+<link rel="icon" href="icon32.png">
+<link rel="stylesheet" href="css/editor.css">
+</head>
+<body>
+
+<div id="topbar">
+	<span id="logo">星途少女社区版 剧情编辑器 v0.1</span>
+	<button id="btnNew">新建</button>
+	<button id="btnImport">导入JSON</button>
+	<button id="btnExport">导出JSON</button>
+	<button id="btnImgRes">导入图片</button>
+	<button id="btnSndRes">导入音乐</button>
+	<button id="btnUndo" disabled>撤销</button>
+	<button id="btnRedo" disabled>恢复</button>
+	<label id="pvDlgWrap"><input type="checkbox" id="pvDlg" checked>预览对话框</label>
+	<span id="resCount"></span>
+	<span id="topspace"></span>
+	<button id="btnPlayAll">从头播放</button>
+	<button id="btnPlayHere">从当前播放</button>
+	<button id="btnStop" disabled>停止</button>
+	<button id="btnFull">全屏</button>
+	<button id="btnAbout">关于</button>
+</div>
+
+<div id="main">
+
+	<div id="sidebar">
+		<button class="fold" data-target="meta">剧情设置</button>
+		<div id="meta">
+			<div class="mrow">
+				<label>标题</label>
+				<input id="metaDes" type="text">
+			</div>
+			<div class="mrow">
+				<label>编号</label>
+				<input id="metaScript" type="text">
+			</div>
+			<div class="mrow">
+				<label>女主</label>
+				<input id="var_nvzhuName" type="text">
+			</div>
+			<div class="mrow">
+				<label>精灵</label>
+				<input id="var_jinglingName" type="text">
+			</div>
+			<div class="mrow">
+				<label>男主</label>
+				<input id="var_nanzhuName" type="text">
+			</div>
+		</div>
+		<button class="fold" data-target="nodeList">节点列表</button>
+		<div id="nodeList"></div>
+		<div id="addbar">
+			<button id="btnAddBg">+背景</button>
+			<button id="btnAddChara">+立绘</button>
+			<button id="btnAddText">+对话</button>
+			<button id="btnAddSnd">+音乐</button>
+			<button id="btnAddWait">+等待</button>
+			<button id="btnAddOpt">+选项</button>
+			<button id="btnAddEnd">+结束</button>
+		</div>
+	</div>
+
+	<div id="stageWrap">
+		<div id="stageBox"></div>
+		<button id="fsExit">退出全屏</button>
+	</div>
+
+	<div id="sidepanel">
+		<div id="resHead">自定义资源</div>
+		<div id="resList"></div>
+		<div id="props"></div>
+	</div>
+
+</div>
+
+<div id="aboutMask"></div>
+<div id="aboutBox">
+	<h3>星途少女社区版 剧情编辑器 v0.1</h3>
+	<p>作者: mtdcmz</p>
+	<p><a href="https://github.com/mtdcmz" target="_blank">https://github.com/mtdcmz</a></p>
+	<p><a href="https://space.bilibili.com/426046208" target="_blank">https://space.bilibili.com/426046208</a></p>
+	<button id="aboutClose">关闭</button>
+</div>
+
+<script src="js/assets.js"></script>
+<script src="js/player.js"></script>
+<script src="js/editor.js"></script>
+</body>
+</html>

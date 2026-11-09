@@ -1,0 +1,487 @@
+{
+    "part_comment": "layer为层次，name为名称，ct为冲突的层次，switch为执行交换后的层次,flashShow当为0是切换不闪光，1时闪光，2时闪光并伴有粒子。gradeValue为该层服装的评分权值,keepEmpty为是否为空才能出门",
+    "part": [
+        {
+            "layer": "35",
+            "name": "特效",
+			"area":"area_3",
+			"flashShow":1,
+			"gradeValue":1
+        },
+		{
+            "layer": "34.5",
+            "name": "兽角/兽耳",
+			"ct": "34",
+			"area":"area_3",
+			"flashShow":2,
+			"gradeValue":1
+        },
+		{
+            "layer": "34",
+            "name": "帽子",
+			"ct": "33,34.5",
+			"area":"area_3",
+			"flashShow":2,
+			"gradeValue":1
+        },
+        {
+            "layer": "33",
+            "name": "头饰",
+			"ct": "34",
+			"area":"area_3",
+			"flashShow":2,
+			"gradeValue":1
+        },
+        {
+            "layer": "32",
+            "name": "眼镜",
+			"area":"area_110",
+			"flashShow":2,
+			"gradeValue":1
+        },
+        {
+            "layer": "31",
+            "name": "头发前部分",
+			"area":"area_8",
+			"flashShow":2,
+			"gradeValue":1
+        },
+        {
+            "layer": "30",
+            "name": "首饰",
+			"area":"area_7",
+			"flashShow":1,
+			"gradeValue":1
+        },
+        {
+            "layer": "29",
+            "name": "围脖",
+			"area":"area_7",
+			"flashShow":2,
+			"gradeValue":1
+        },
+        {
+            "layer": "28",
+            "name": "耳坠",
+			"area":"area_110",
+			"flashShow":1,
+			"gradeValue":1
+        },
+        {
+            "layer": "27",
+            "name": "包包前",
+			"ct": "27.1",
+			"area":"area_9",
+			"flashShow":1,
+			"gradeValue":1
+        },
+		{
+            "layer": "27.1",
+            "name": "包包左",
+			"ct": "27",
+			"area":"area_233",
+			"flashShow":1,
+			"gradeValue":1
+        },
+        {
+            "layer": "26",
+            "name": "腰饰",
+			"area":"area_4",
+			"flashShow":1,
+			"gradeValue":1
+        },
+        {
+            "layer": "25",
+            "name": "左手持物",
+			"area":"area_2",
+			"flashShow":2,
+			"gradeValue":1
+        },
+        {
+            "layer": "24",
+            "name": "右手持物",
+			"area":"area_1",
+			"flashShow":2,
+			"gradeValue":1
+        },
+        {
+            "layer": "23",
+            "name": "手套",
+            "switch": "15.5",
+			"area":"area_10",
+			"flashShow":1,
+			"gradeValue":1
+        },
+        {
+            "layer": "22",
+            "name": "眼睛",
+			"area":"area_110",
+			"flashShow":0,
+			"gradeValue":1
+        },
+        {
+            "layer": "21",
+            "name": "眉毛",
+			"area":"area_11",
+			"flashShow":0,
+			"gradeValue":0
+        },
+        {
+            "layer": "20",
+            "name": "嘴巴",
+			"area":"area_110",
+			"flashShow":0,
+			"gradeValue":0
+        },
+		{
+            "layer": "19.5",
+            "name": "特殊前",
+			"area":"area_4",
+			"flashShow":1,
+			"gradeValue":1
+        },
+        {
+            "layer": "19",
+            "name": "外套",
+			"area":"area_12",
+			"flashShow":2,
+			"gradeValue":1
+        },
+		{
+            "layer": "18.5",
+            "name": "过腰裙",
+            "ct": "9.5,8.9,12,13,14,18",
+			"area":"area_4",
+			"flashShow":2,
+			"gradeValue":1
+        },
+        {
+            "layer": "18",
+            "name": "吊带裤",
+            "ct": "9.5,8.9,12,13,18.5",
+			"area":"area_4",
+			"flashShow":2,
+			"gradeValue":1
+        },
+        {
+            "layer": "17",
+            "name": "袖套",
+			"ct": "17.5",
+			"area":"area_10",
+			"flashShow":1,
+			"gradeValue":1
+        },
+		{
+            "layer": "17.1",
+            "name": "袖套（左）",
+			"ct": "17",
+			"area":"area_233",
+			"flashShow":1,
+			"gradeValue":1
+        },
+        {
+            "layer": "16",
+            "name": "指环",
+			"area":"area_2",
+			"flashShow":2,
+			"gradeValue":1
+        },
+		{
+            "layer": "16.1",
+            "name": "指环（右）",
+			"area":"area_1",
+			"flashShow":2,
+			"gradeValue":1
+        },
+        {
+            "layer": "15",
+            "name": "上衣",
+            "ct": "9,9.5,14",
+			"area":"area_12",
+			"flashShow":2,
+			"gradeValue":1
+        },
+		{
+            "layer": "14.1",
+            "name": "手链/手镯",
+			"ct": "14.2",
+			"area":"area_233",
+			"flashShow":2,
+			"gradeValue":1
+        },
+		{
+            "layer": "14.2",
+            "name": "手链/手镯(右)",
+			"ct": "14.1",
+			"area":"area_10",
+			"flashShow":2,
+			"gradeValue":1
+        },
+		{
+            "layer": "14.5",
+            "name": "连体衣",
+            "ct": "8.9,9,9.5,15,12,13,18,18.5,14",
+			"area":"area_4",
+			"flashShow":2,
+			"gradeValue":1
+        },
+        {
+            "layer": "14",
+            "name": "连衣装",
+            "ct": "9,9.5,15,13,18,18.5,8.9,14.5",
+			"area":"area_4",
+			"flashShow":2,
+			"gradeValue":1
+        },
+        {
+            "layer": "13",
+            "name": "裙子",
+            "ct": "9.5,14,18.5,8.9",
+			"area":"area_5",
+			"flashShow":2,
+			"gradeValue":1
+        },
+        {
+            "layer": "12",
+            "name": "裤子",
+			"ct": "9.5,18,8.9",
+			"area":"area_5",
+			"flashShow":2,
+			"gradeValue":1
+        },
+        {
+            "layer": "11",
+            "name": "鞋子",
+            "switch": "12.5",
+			"area":"area_666",
+			"flashShow":2,
+			"gradeValue":1
+        },
+		{
+            "layer": "10.1",
+            "name": "足饰",
+			"area":"area_6",
+			"flashShow":2,
+			"gradeValue":1
+        },
+        {
+            "layer": "10",
+            "name": "袜子",
+			"area":"area_6",
+			"flashShow":2,
+			"gradeValue":1
+        },
+		{
+            "layer": "9.5",
+            "name": "泳衣",
+			"ct": "8.9,9,12,13,14,14.5,15,18,18.5",
+			"area":"area_4",
+			"flashShow":2,
+			"gradeValue":1
+        },
+        {
+            "layer": "9",
+            "name": "内衣上",
+			"ct": "15,14.5,14,9.5",
+			"area":"area_4",
+			"flashShow":2,
+			"gradeValue":0,
+			"keepEmpty":1
+        },
+		{
+            "layer": "8.9",
+            "name": "内衣下",
+			"ct": "9.5,12,18,18.5,13,14,14.5",
+			"area":"area_4",
+			"flashShow":2,
+			"gradeValue":0,
+			"keepEmpty":1
+        },
+		 {
+            "layer": "8.1",
+            "name": "脸部纹身",
+			"area":"area_11",
+			"flashShow":2,
+			"gradeValue":1
+        },
+        {
+            "layer": "8.2",
+            "name": "上体纹身",
+			"area":"area_12",
+			"flashShow":2,
+			"gradeValue":1
+        },
+		{
+            "layer": "8.3",
+            "name": "腿部纹身",
+			"area":"area_6",
+			"flashShow":2,
+			"gradeValue":1
+        },
+		{
+            "layer": "8",
+            "name": "脸饰",
+			"area":"area_11",
+			"flashShow":2,
+			"gradeValue":1
+        },
+        {
+            "layer": "7",
+            "name": "身体(肤色)",
+			"area":"area_11",
+			"flashShow":0,
+			"gradeValue":0
+        },
+		{
+            "layer": "6.5",
+            "name": "展示模型",
+			"area":"area_1",
+			"flashShow":2,
+			"gradeValue":0
+        },
+        {
+            "layer": "6",
+            "name": "裙子后部分",
+			"area":"area_5",
+			"flashShow":2,
+			"gradeValue":1
+        },
+        {
+            "layer": "5",
+            "name": "外套后部分",
+			"area":"area_12",
+			"flashShow":2,
+			"gradeValue":1
+        },
+        {
+            "layer": "4",
+            "name": "翅膀",
+			"area":"area_4",
+			"flashShow":2,
+			"gradeValue":1
+        },
+        {
+            "layer": "3",
+            "name": "尾巴",
+			"area":"area_5",
+			"flashShow":2,
+			"gradeValue":1
+        },
+		{
+            "layer": "2.7",
+            "name": "特殊后（头发后前面）",
+			"area":"area_4",
+			"flashShow":1,
+			"gradeValue":1
+        },
+		{
+            "layer": "2.6",
+            "name": "头发后部分",
+			"area":"area_8",
+			"flashShow":2,
+			"gradeValue":1
+        },
+		{
+            "layer": "2.5",
+            "name": "特殊后（头发后后面）",
+			"area":"area_4",
+			"flashShow":1,
+			"gradeValue":1
+        },
+		{
+            "layer": "2.4",
+            "name": "帽子后",
+			"area":"area_3",
+			"flashShow":2,
+			"gradeValue":1
+        },
+		{
+            "layer": "2.3",
+            "name": "头饰后",
+			"area":"area_3",
+			"flashShow":2,
+			"gradeValue":1
+        },
+		{
+            "layer": "2.2",
+            "name": "围脖后",
+			"area":"area_7",
+			"flashShow":2,
+			"gradeValue":1
+        },
+		{
+            "layer": "2.1",
+            "name": "腰饰后",
+			"area":"area_4",
+			"flashShow":2,
+			"gradeValue":1
+        },
+        {
+            "layer": "2",
+            "name": "包包后",
+			"area":"area_9",
+			"flashShow":2,
+			"gradeValue":1
+        },
+		{
+            "layer": "1.1",
+            "name": "手套后",
+			"area":"area_9",
+			"flashShow":2,
+			"gradeValue":1
+        }
+    ],
+    "color": [
+        "红",
+        "橙",
+        "黄",
+        "绿",
+        "青",
+        "蓝",
+        "紫",
+        "黑",
+        "白",
+		"灰",
+        "金",
+        "银",
+        "粉",
+        "咖啡",
+		"浅色",
+		"深色"
+    ],
+    "type": [
+        "日常",
+        "正装",
+		"西装",
+        "校服",
+        "礼服",
+        "古装",
+        "洋装",
+		"舞台服饰",
+		"民族服饰"
+    ],
+    "style": [
+        "休闲",
+        "运动",
+        "百搭",
+		"街头",
+		"田园",
+		"朋克",
+		"中国风",
+		"日风",
+		"韩风",
+		"欧美风",
+		"梦幻",
+        "中性",
+        "狂野",
+		"复古"
+    ],
+    "value": [
+        "可爱,成熟",
+        "清凉,保暖",
+        "清纯,性感",
+        "华丽,简约",
+        "优雅,活泼",
+        "修身,宽松"
+    ]
+}

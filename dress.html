@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>星途少女社区版 服装编辑器 v0.2</title>
+<link rel="icon" href="icon32.png">
+<link rel="stylesheet" href="css/editor.css">
+</head>
+<body>
+
+<div id="topbar">
+	<span id="logo">星途少女社区版 服装编辑器 v0.2</span>
+	<button id="btnNew">空体</button>
+	<button id="btnImport">导入JSON</button>
+	<button id="btnExport">导出穿搭JSON</button>
+	<button id="btnImgRes">导入图片</button>
+	<button id="btnUndo" disabled>撤销</button>
+	<button id="btnRedo" disabled>恢复</button>
+	<span id="topspace"></span>
+	<button id="btnDefault">默认穿搭</button>
+	<button id="btnModel">下载人物底模</button>
+	<button id="btnAbout">关于</button>
+</div>
+
+<div id="main">
+
+	<div id="sidebar">
+		<div class="mrow" style="padding:6px 8px 0">
+			<input id="filterIn" type="text" placeholder="搜索服装名称…" style="width:100%;box-sizing:border-box">
+		</div>
+		<button class="fold" data-target="wearList">当前穿搭</button>
+		<div id="wearList"></div>
+		<button class="fold" data-target="clothList">服装库</button>
+		<div id="clothList"></div>
+		<div id="addbar">
+			<button id="btnAddCloth">+新服装</button>
+			<span id="clothCount" class="ncount"></span>
+		</div>
+	</div>
+
+	<div id="stageWrap">
+		<div id="stageBox"></div>
+	</div>
+
+	<div id="sidepanel">
+		<div id="resHead">自定义资源</div>
+		<div id="resList"></div>
+		<div id="props"></div>
+	</div>
+
+</div>
+
+<div id="aboutMask"></div>
+<div id="aboutBox">
+	<h3>星途少女社区版 服装编辑器 v0.1</h3>
+	<p>作者: mtdcmz</p>
+	<p><a href="https://github.com/mtdcmz" target="_blank">https://github.com/mtdcmz</a></p>
+	<p><a href="https://space.bilibili.com/426046208" target="_blank">https://space.bilibili.com/426046208</a></p>
+	<button id="aboutClose">关闭</button>
+</div>
+
+<script src="assets/dress/dress_data.js"></script>
+<script src="js/dress.js"></script>
+</body>
+</html>
