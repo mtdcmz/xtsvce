@@ -7,8 +7,8 @@
 
 	var D = window.DRESS_DATA;
 	var STAGE_W = 1000, STAGE_H = 600;
-	// 原版 DressPanel showMode 下 mc_chara.x=154, mannequin 原点 y=0
-	var MAN_X = 154, MAN_Y = 0;
+	// 原版 DressPanelUI 皮肤(DefineSprite_684)显示列表: mc_chara 在 (154,10), PoseMan 挂其 (0,0)
+	var MAN_X = 154, MAN_Y = 10;
 
 	var clothes = D.clothes.clothes;
 	var layersDef = {};
@@ -257,8 +257,8 @@
 	stageBox.appendChild(stageEl);
 	var ctx = stageEl.getContext('2d');
 	var ROOM_SRC = 'assets/dress/room.jpg';
-	var SHADOW_SRC = 'assets/dress/shadow.svg'; // 原版脚下阴影, 模型坐标系(114.5,526.9)
-	var SHADOW_X = 114.5, SHADOW_Y = 526.9;
+	var SHADOW_SRC = 'assets/dress/shadow.svg'; // 原版脚下阴影, charaContainer 内坐标(109.95,528.95)
+	var SHADOW_X = 109.95, SHADOW_Y = 528.95;
 
 	var imgCache = {};
 	function cacheImg(src) {
