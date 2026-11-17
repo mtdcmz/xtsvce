@@ -6,7 +6,10 @@ var GAoEngine = (function () {
 	var LAYER_NAMES = ['bg', 'chara1', 'chara2', 'chara3', 'fore'];
 	var TEXT_DELAY = 30; // 打字机速度, 原版gn.textDelay
 	var FONT = '"Microsoft YaHei", SimSun, sans-serif';
-	var OUTLINE = '#662d13';
+	// 原版DefineEditText实测: 正文20px #640f4b(奶油光晕), 名字23px粗体白色(棕光晕)
+	var CONTENT_COLOR = '#640f4b';
+	var CONTENT_GLOW = '#fbfae6';
+	var NAME_GLOW = '#662d13';
 
 	function clamp01(v) {
 		return v < 0 ? 0 : (v > 1 ? 1 : v);
@@ -243,8 +246,8 @@ var GAoEngine = (function () {
 	Dialog.prototype.print = function (str) {
 		if (!this.lines.length) this.newLine();
 		var f = this.curFormat();
-		var color = f.color ? ('#' + f.color) : OUTLINE;
-		var size = f.size || 22;
+		var color = f.color ? ('#' + f.color) : CONTENT_COLOR;
+		var size = f.size || 20;
 		var ctx = this.player.ctx;
 		ctx.font = size + 'px ' + FONT;
 		var line = this.lines[this.lines.length - 1];
@@ -954,29 +957,40 @@ var GAoEngine = (function () {
 		if (back && back.complete) ctx.drawImage(back, 50, 432, 703, 159);
 
 		if (d.nameVisible) {
-			var nx = (d.nameSide == 'right') ? 594 : 90;
+			// 原版: 名牌部件(72,412.3), 底图视觉位部件内(18.6,5) 133.85x36, 右位部件x=564.05并镜像
 			var name = this.cache.get('assets/gameui/name.png');
-			if (name && name.complete) ctx.drawImage(name, nx, 414, 134, 36);
-			ctx.font = '21px ' + FONT;
+			if (name && name.complete) {
+				ctx.save();
+				if (d.nameSide == 'right') {
+					ctx.translate(648.55, 435.3);
+					ctx.scale(-1, 1);
+					ctx.drawImage(name, -66.925, -18, 133.85, 36);
+				} else {
+					ctx.drawImage(name, 90.6, 417.3, 133.85, 36);
+				}
+				ctx.restore();
+			}
+			// 名字文本: 23px粗体白色居中, 字段中心(158.05,432.2)/右位(650,432.2), 棕色光晕
+			ctx.font = 'bold 23px ' + FONT;
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'middle';
-			ctx.lineWidth = 3;
-			ctx.lineJoin = 'round';
-			ctx.strokeStyle = OUTLINE;
-			ctx.fillStyle = '#fff';
-			ctx.strokeText(d.nameText, nx + 67, 433);
-			ctx.fillText(d.nameText, nx + 67, 433);
+			ctx.shadowColor = NAME_GLOW;
+			ctx.shadowBlur = 2.5;
+			ctx.fillStyle = '#ffffff';
+			ctx.fillText(d.nameText, (d.nameSide == 'right') ? 650 : 158.05, 432.2);
+			ctx.shadowBlur = 0;
+			ctx.shadowColor = 'transparent';
 		}
 
 		ctx.save();
 		ctx.beginPath();
-		ctx.rect(73, 462, 662, 96);
+		ctx.rect(73, 462.45, 662, 95.5);
 		ctx.clip();
 		ctx.textBaseline = 'alphabetic';
 		for (var i = 0; i < d.lines.length; i++) {
 			var line = d.lines[i];
 			if (!line.chars.length) continue;
-			var y = 462 + i * 32 + 24;
+			var y = 464.45 + i * 30 + 22;
 			if (y > 558) break;
 			var lx = 73;
 			if (line.align != 'left') {
@@ -987,24 +1001,25 @@ var GAoEngine = (function () {
 				}
 				lx = (line.align == 'center') ? (73 + (662 - lw) / 2) : (735 - lw);
 			}
+			// 原版: 奶油色光晕垫底 + 深梅红文字, 无硬描边
+			ctx.shadowColor = CONTENT_GLOW;
+			ctx.shadowBlur = 2.5;
 			for (var j = 0; j < line.chars.length; j++) {
 				var ch = line.chars[j];
 				ctx.font = ch.size + 'px ' + FONT;
 				ctx.textAlign = 'left';
-				ctx.lineWidth = 2.5;
-				ctx.lineJoin = 'round';
-				ctx.strokeStyle = '#ffffff';
 				ctx.fillStyle = ch.color;
-				ctx.strokeText(ch.ch, lx, y);
 				ctx.fillText(ch.ch, lx, y);
 				lx += ctx.measureText(ch.ch).width;
 			}
+			ctx.shadowBlur = 0;
+			ctx.shadowColor = 'transparent';
 		}
 		ctx.restore();
 
 		if (d.clickVisible) {
 			var cont = this.cache.get('assets/gameui/continue.png');
-			if (cont && cont.complete) ctx.drawImage(cont, 637, 548, 90, 26);
+			if (cont && cont.complete) ctx.drawImage(cont, 650.45, 547.95, 90, 26);
 		}
 		ctx.restore();
 	};
