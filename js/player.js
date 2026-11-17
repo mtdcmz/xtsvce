@@ -1001,14 +1001,18 @@ var GAoEngine = (function () {
 				}
 				lx = (line.align == 'center') ? (73 + (662 - lw) / 2) : (735 - lw);
 			}
-			// 原版: 奶油色光晕垫底 + 深梅红文字, 无硬描边
+			// 白描边 + 奶油色光晕 + 文字色
 			ctx.shadowColor = CONTENT_GLOW;
 			ctx.shadowBlur = 2.5;
 			for (var j = 0; j < line.chars.length; j++) {
 				var ch = line.chars[j];
 				ctx.font = ch.size + 'px ' + FONT;
 				ctx.textAlign = 'left';
+				ctx.lineJoin = 'round';
+				ctx.lineWidth = 2.5;
+				ctx.strokeStyle = '#ffffff';
 				ctx.fillStyle = ch.color;
+				ctx.strokeText(ch.ch, lx, y);
 				ctx.fillText(ch.ch, lx, y);
 				lx += ctx.measureText(ch.ch).width;
 			}
@@ -1019,7 +1023,7 @@ var GAoEngine = (function () {
 
 		if (d.clickVisible) {
 			var cont = this.cache.get('assets/gameui/continue.png');
-			if (cont && cont.complete) ctx.drawImage(cont, 650.45, 547.95, 90, 26);
+			if (cont && cont.complete) ctx.drawImage(cont, 637, 548, 90, 26);
 		}
 		ctx.restore();
 	};
