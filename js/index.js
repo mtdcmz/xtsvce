@@ -6,16 +6,12 @@
 	var player = null;
 	var vars = { nvzhuName: '女主', jinglingName: '路琪', nanzhuName: '苏子轩' };
 
-	var lastW = 0;
-	var lastH = 0;
 	function fit() {
-		// 以舞台实际渲染尺寸为准, 实时适配
-		var w = stage.clientWidth || window.innerWidth;
-		var h = stage.clientHeight || window.innerHeight;
+		// 全屏时stage的100%高度解析不可靠, 直接用窗口实际尺寸
+		var fs = document.fullscreenElement || document.webkitFullscreenElement;
+		var w = fs ? window.innerWidth : (stage.clientWidth || window.innerWidth);
+		var h = fs ? window.innerHeight : (stage.clientHeight || window.innerHeight);
 		if (!w || !h) return;
-		if (w === lastW && h === lastH && player) return;
-		lastW = w;
-		lastH = h;
 		var s = Math.min(w / 800, h / 600);
 		var box = document.getElementById('stageBox');
 		box.style.width = (800 * s) + 'px';
@@ -31,11 +27,32 @@
 			}
 		}
 	}
-	// 播放期间持续监视尺寸变化(进/退全屏、转屏都是异步生效)
-	setInterval(fit, 300);
+	// 播放期间持续监视尺寸变化(进/退全屏、转屏都是异步生效, 只在尺寸真变了才重设)
+	var lastW = 0;
+	var lastH = 0;
+	var lastBoxW = '';
+	setInterval(function () {
+		var fs = document.fullscreenElement || document.webkitFullscreenElement;
+		var w = fs ? window.innerWidth : (stage.clientWidth || window.innerWidth);
+		var h = fs ? window.innerHeight : (stage.clientHeight || window.innerHeight);
+		var box = document.getElementById('stageBox');
+		if (w === lastW && h === lastH && box.style.width === lastBoxW) return;
+		lastW = w;
+		lastH = h;
+		lastBoxW = box.style.width;
+		fit();
+	}, 300);
 	window.addEventListener('resize', fit);
+	window.addEventListener('orientationchange', fit);
 	document.addEventListener('fullscreenchange', fit);
 	document.addEventListener('webkitfullscreenchange', fit);
+	// 全屏/转屏是分好几帧才完成的, 错开补几次
+	function fitSoon() {
+		[100, 400, 1000].forEach(function (ms) { setTimeout(fit, ms); });
+	}
+	document.addEventListener('fullscreenchange', fitSoon);
+	document.addEventListener('webkitfullscreenchange', fitSoon);
+	window.addEventListener('orientationchange', fitSoon);
 
 	function closeStage() {
 		if (player) {
