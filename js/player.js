@@ -970,16 +970,16 @@ var GAoEngine = (function () {
 				}
 				ctx.restore();
 			}
-			// 名字文本: 23px粗体白色居中, 字段中心(158.05,432.2)/右位(650,432.2), 棕色光晕
+			// 名字文本: 23px粗体白色居中+棕色描边, 字段中心(158.05,432.2)/右位(650,432.2)
 			ctx.font = 'bold 23px ' + FONT;
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'middle';
-			ctx.shadowColor = NAME_GLOW;
-			ctx.shadowBlur = 2.5;
+			ctx.lineWidth = 3;
+			ctx.lineJoin = 'round';
+			ctx.strokeStyle = NAME_GLOW;
 			ctx.fillStyle = '#ffffff';
+			ctx.strokeText(d.nameText, (d.nameSide == 'right') ? 650 : 158.05, 432.2);
 			ctx.fillText(d.nameText, (d.nameSide == 'right') ? 650 : 158.05, 432.2);
-			ctx.shadowBlur = 0;
-			ctx.shadowColor = 'transparent';
 		}
 
 		ctx.save();
