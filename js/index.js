@@ -119,8 +119,25 @@
 		})).then(function () { return env; });
 	}
 
+	function enterFullscreen() {
+		var fn = stage.requestFullscreen || stage.webkitRequestFullscreen;
+		if (fn) {
+			var p = fn.call(stage);
+			if (p && p.then) {
+				p.then(function () {
+					if (screen.orientation && screen.orientation.lock) {
+						screen.orientation.lock('landscape').catch(function () {});
+					}
+				}).catch(function () {});
+			}
+		}
+	}
+
 	function play(src) {
+		// 全屏必须趁点击手势还有效时调, 加载完再调会被浏览器拒绝
+		stage.style.display = 'flex';
 		showOverlay('加载关卡中...');
+		enterFullscreen();
 		fetch(src).then(function (r) { return r.json(); }).then(function (data) {
 			showOverlay('加载资源中... 0/0 0 KB/s');
 			return preloadLevel(data, function (done, total, kbps) {
@@ -128,7 +145,6 @@
 			}).then(function (env) {
 				hideOverlay();
 				if (player) player.destroy();
-				stage.style.display = 'flex';
 				lastW = 0; // 强制重新适配
 				fit();
 				player = GAoEngine.create(stageBox, {
@@ -137,18 +153,6 @@
 					vars: vars
 				});
 				fit();
-				// 与编辑器一致: 全屏 + 手机锁横屏
-				var fn = stage.requestFullscreen || stage.webkitRequestFullscreen;
-				if (fn) {
-					var p = fn.call(stage);
-					if (p && p.then) {
-						p.then(function () {
-							if (screen.orientation && screen.orientation.lock) {
-								screen.orientation.lock('landscape').catch(function () {});
-							}
-						}).catch(function () {});
-					}
-				}
 				player.play(data.exps, 0, null);
 			});
 		}).catch(function (e) {
