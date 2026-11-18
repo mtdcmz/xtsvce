@@ -956,21 +956,26 @@ var GAoEngine = (function () {
 		var back = this.cache.get('assets/gameui/back.png');
 		if (back && back.complete) ctx.drawImage(back, 50, 432, 703, 159);
 
+		// UI校准(原游戏截图像素实测): 正文-5px, 名字-2px
+		var textDy = -5;
+		var textDx = 0;
+		var nameDy = -2;
+
 		if (d.nameVisible) {
 			// 原版: 名牌部件(72,412.3), 底图视觉位部件内(18.6,5) 133.85x36, 右位部件x=564.05并镜像
 			var name = this.cache.get('assets/gameui/name.png');
 			if (name && name.complete) {
 				ctx.save();
 				if (d.nameSide == 'right') {
-					ctx.translate(648.55, 435.3);
+					ctx.translate(648.55, 435.3 + nameDy);
 					ctx.scale(-1, 1);
 					ctx.drawImage(name, -66.925, -18, 133.85, 36);
 				} else {
-					ctx.drawImage(name, 90.6, 417.3, 133.85, 36);
+					ctx.drawImage(name, 90.6, 417.3 + nameDy, 133.85, 36);
 				}
 				ctx.restore();
 			}
-			// 名字文本: 23px粗体白色居中+棕色描边, 字段中心(158.05,432.2)/右位(650,432.2)
+			// 名字文本: 23px粗体白色居中+棕色描边
 			ctx.font = 'bold 23px ' + FONT;
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'middle';
@@ -978,28 +983,28 @@ var GAoEngine = (function () {
 			ctx.lineJoin = 'round';
 			ctx.strokeStyle = NAME_GLOW;
 			ctx.fillStyle = '#ffffff';
-			ctx.strokeText(d.nameText, (d.nameSide == 'right') ? 650 : 158.05, 432.2);
-			ctx.fillText(d.nameText, (d.nameSide == 'right') ? 650 : 158.05, 432.2);
+			ctx.strokeText(d.nameText, (d.nameSide == 'right') ? 650 : 158.05, 432.2 + nameDy);
+			ctx.fillText(d.nameText, (d.nameSide == 'right') ? 650 : 158.05, 432.2 + nameDy);
 		}
 
 		ctx.save();
 		ctx.beginPath();
-		ctx.rect(73, 462.45, 662, 95.5);
+		ctx.rect(73 + textDx, 462.45 + textDy, 662, 95.5);
 		ctx.clip();
 		ctx.textBaseline = 'alphabetic';
 		for (var i = 0; i < d.lines.length; i++) {
 			var line = d.lines[i];
 			if (!line.chars.length) continue;
-			var y = 464.45 + i * 30 + 22;
-			if (y > 558) break;
-			var lx = 73;
+			var y = 464.45 + textDy + i * 29 + 22;
+			if (y > 558 + textDy) break;
+			var lx = 73 + textDx;
 			if (line.align != 'left') {
 				var lw = 0;
 				for (var c = 0; c < line.chars.length; c++) {
 					ctx.font = line.chars[c].size + 'px ' + FONT;
 					lw += ctx.measureText(line.chars[c].ch).width;
 				}
-				lx = (line.align == 'center') ? (73 + (662 - lw) / 2) : (735 - lw);
+				lx = (line.align == 'center') ? (73 + textDx + (662 - lw) / 2) : (735 + textDx - lw);
 			}
 			// 白描边 + 奶油色光晕 + 文字色
 			ctx.shadowColor = CONTENT_GLOW;
